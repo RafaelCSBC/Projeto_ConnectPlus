@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/cliente-styles.css">
+<link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Connect+</a></h1></div>
+        <nav><ul></ul></nav>
+    </header>
+
+    <main class="cliente-panel-container">
+        <h2>Meu Perfil</h2>
+        <div id="perfil-messages" class="form-messages" style="display:none;"></div>
+
+        <form id="perfil-form" class="perfil-form">
+            <h3>Dados Pessoais</h3>
+            <div class="form-group">
+                <label for="perfil-nome-completo">Nome Completo <span class="required-asterisk">*</span></label>
+                <input type="text" id="perfil-nome-completo" name="nome_completo" required>
+            </div>
+            <div class="form-group">
+                <label for="perfil-nome-social">Nome Social</label>
+                <input type="text" id="perfil-nome-social" name="nome_social">
+            </div>
+            <div class="form-group">
+                <label for="perfil-email">Email (não pode ser alterado)</label>
+                <input type="email" id="perfil-email" name="email" readonly>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="perfil-cpf">CPF (não pode ser alterado)</label>
+                    <input type="text" id="perfil-cpf" name="cpf" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="perfil-data-nascimento">Data de Nascimento</label>
+                    <input type="date" id="perfil-data-nascimento" name="data_nascimento">
+                </div>
+            </div>
+
+            <hr class="form-divider">
+            <h3>Identidade (Opcional)</h3>
+             <div class="form-row">
+                <div class="form-group">
+                    <label for="perfil-identidade-genero">Identidade de Gênero</label>
+                    <select id="perfil-identidade-genero" name="identidade_genero">
+                        <option value="">Prefiro não declarar</option>
+                        <option value="MULHER_CIS">Mulher Cis</option> <option value="HOMEM_CIS">Homem Cis</option>
+                        <option value="MULHER_TRANS">Mulher Trans</option> <option value="HOMEM_TRANS">Homem Trans</option>
+                        <option value="NAO_BINARIE">Não Binárie</option> <option value="AGENERO">Agênero</option>
+                        <option value="GENERO_FLUIDO">Gênero Fluido</option> <option value="TRAVESTI">Travesti</option>
+                        <option value="OUTRA_IDENTIDADE">Outra</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="perfil-orientacao-sexual">Orientação Sexual</label>
+                    <select id="perfil-orientacao-sexual" name="orientacao_sexual">
+                        <option value="">Prefiro não declarar</option>
+                         <option value="ASSEXUAL">Assexual</option> <option value="BISSEXUAL">Bissexual</option>
+                         <option value="HETEROSSEXUAL">Heterossexual</option> <option value="LESBICA">Lésbica</option>
+                         <option value="GAY">Gay</option> <option value="PANSEXUAL">Pansexual</option>
+                         <option value="QUEER">Queer</option> <option value="OUTRA_ORIENTACAO">Outra</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="perfil-pronomes">Pronomes</label>
+                <input type="text" id="perfil-pronomes" name="pronomes">
+            </div>
+
+            <hr class="form-divider">
+            <h3>Contato e Endereço Principal</h3>
+            <div class="form-group">
+                <label for="perfil-telefone">Telefone Celular <span class="required-asterisk">*</span></label>
+                <input type="tel" id="perfil-telefone" name="telefone_numero" required>
+            </div>
+            <!-- Campos de endereço aqui (CEP, Logradouro, etc.) - Simplificado por agora -->
+            <div class="form-group">
+                 <label for="perfil-cep">CEP</label>
+                 <input type="text" id="perfil-cep" name="cep">
+            </div>
+            <p style="font-size:0.9em; color: #666;">Para alterar outros detalhes do endereço, entre em contato com o suporte.</p>
+
+
+            <button type="submit" class="submit-button" id="salvar-perfil-button">Salvar Alterações</button>
+        </form>
+        
+        <hr class="form-divider">
+        <h3>Alterar Senha</h3>
+        <form id="alterar-senha-form" class="perfil-form">
+            <div class="form-group">
+                <label for="senha-atual">Senha Atual <span class="required-asterisk">*</span></label>
+                <input type="password" id="senha-atual" name="senha_atual" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="nova-senha">Nova Senha <span class="required-asterisk">*</span></label>
+                    <input type="password" id="nova-senha" name="nova_senha" required minlength="8">
+                </div>
+                <div class="form-group">
+                    <label for="confirmar-nova-senha">Confirmar Nova Senha <span class="required-asterisk">*</span></label>
+                    <input type="password" id="confirmar-nova-senha" name="confirmar_nova_senha" required>
+                </div>
+            </div>
+            <button type="submit" class="submit-button" id="salvar-nova-senha-button">Alterar Senha</button>
+        </form>
+
+    </main>
+    <footer>
+        <div class="footer-bottom"><p>&copy; <span id="currentYearFooterPerfil"></span> Connect+.</p></div>
+    </footer>
+    <script src="../js/authManager.js"></script>
+    <script src="../js/cliente-perfil-script.js"></script>
+</body>
+</html>
