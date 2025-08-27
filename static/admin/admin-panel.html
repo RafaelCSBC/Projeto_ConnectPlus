@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrador - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS Geral -->
+<link rel="stylesheet" href="../css/admin-panel-styles.css"> <!-- CSS do Painel Admin -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Painel Administrador</h1>
+        </div>
+        <nav>
+            <ul>
+                <!-- Links serão preenchidos pelo authManager.js -->
+            </ul>
+        </nav>
+        <!-- Menu do Usuário Admin será inserido aqui pelo authManager.js -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-container">
+        <section class="manage-attendants">
+            <h2>Gerenciar Atendentes</h2>
+            
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="area-filter">Área de Atuação:</label>
+                    <select id="area-filter">
+                        <option value="TODOS">Todas as Áreas</option>
+                        <option value="SAUDE">Saúde</option>
+                        <option value="JURIDICO">Jurídico</option>
+                        <option value="CARREIRA">Carreira</option>
+                        <option value="CONTABIL">Contábil</option>
+                        <option value="ASSISTENCIA_SOCIAL">Assistência Social</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="status-filter">Status:</label>
+                    <select id="status-filter">
+                        <option value="TODOS">Todos os Status</option>
+                        <option value="PENDENTE_APROVACAO">Pendente Aprovação</option>
+                        <option value="ATIVO">Ativo</option>
+                        <option value="BLOQUEADO">Bloqueado</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group search-group">
+                    <label for="search-input">Buscar:</label>
+                    <input type="text" id="search-input" placeholder="Nome, Email, CPF...">
+                </div>
+                
+                <button id="apply-filters-button" class="update-button" style="align-self: flex-end;">Aplicar Filtros</button>
+            </div>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nome Completo</th>
+                            <th>Email</th>
+                            <th>CPF</th>
+                            <th>Área Atuação</th>
+                            <th>Data Cadastro</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendants-list-tbody">
+                        <!-- Dados serão carregados dinamicamente -->
+                        <tr><td colspan="7" class="loading-message">Carregando atendentes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Ação no Atendente (Aprovar, Reprovar, Visualizar Detalhes) -->
+    <div id="action-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="modal-close-button">&times;</span>
+            <h2 id="modal-title">Ação no Atendente</h2>
+            
+            <div id="attendant-details-modal-content" class="attendant-details">
+                <!-- Detalhes do atendente serão inseridos aqui -->
+            </div>
+            
+            <div class="form-group" id="motivo-form-group" style="display: none;">
+                <label for="action-reason">Motivo da Ação:</label>
+                <textarea id="action-reason" rows="4" placeholder="Descreva o motivo (obrigatório para aprovação/reprovação/bloqueio)"></textarea>
+            </div>
+            
+            <div class="modal-buttons">
+                <button id="cancel-action-button" class="cancel-button action-button">Cancelar</button>
+                <button id="confirm-action-button" class="confirm-button action-button" style="display: none;">Confirmar Ação</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/authManager.js"></script> <!-- Caminho ajustado -->
+    <script src="../js/admin-panel-script.js"></script>
+</body>
+</html>

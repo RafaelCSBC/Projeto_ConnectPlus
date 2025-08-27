@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/admin-panel-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>Painel Administrador</h1>
+        </div>
+        <nav>
+            <ul>
+                <!-- Links serão preenchidos pelo authManager.js -->
+            </ul>
+        </nav>
+        <!-- Menu do Usuário Admin será inserido aqui pelo authManager.js -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-container">
+        <section class="admin-settings">
+            <h2>Configurações do Sistema</h2>
+            
+            <div class="settings-container">
+                <div class="settings-card">
+                    <h3><i class="fas fa-user-shield"></i> Configurações de Conta</h3>
+                    <form id="admin-account-form" class="settings-form">
+                        <div class="form-group">
+                            <label for="admin-email">Email</label>
+                            <input type="email" id="admin-email" name="email" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-name">Nome Completo</label>
+                            <input type="text" id="admin-name" name="nome_completo">
+                        </div>
+                        <button type="submit" class="action-button">Salvar Alterações</button>
+                    </form>
+                </div>
+
+                <div class="settings-card">
+                    <h3><i class="fas fa-lock"></i> Alterar Senha</h3>
+                    <form id="admin-password-form" class="settings-form">
+                        <div class="form-group">
+                            <label for="current-password">Senha Atual</label>
+                            <input type="password" id="current-password" name="senha_atual" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new-password">Nova Senha</label>
+                            <input type="password" id="new-password" name="nova_senha" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirmar Nova Senha</label>
+                            <input type="password" id="confirm-password" name="confirmar_senha" required>
+                        </div>
+                        <button type="submit" class="action-button">Alterar Senha</button>
+                    </form>
+                </div>
+
+                <div class="settings-card">
+                    <h3><i class="fas fa-cogs"></i> Configurações do Sistema</h3>
+                    <form id="system-settings-form" class="settings-form">
+                        <div class="form-group">
+                            <label for="system-name">Nome do Sistema</label>
+                            <input type="text" id="system-name" name="nome_sistema" value="Connect+">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Email de Contato</label>
+                            <input type="email" id="contact-email" name="email_contato" value="contato@grupoamado.com.br">
+                        </div>
+                        <div class="form-group">
+                            <label>Manutenção do Sistema</label>
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="maintenance-mode" name="modo_manutencao">
+                                <label for="maintenance-mode">Ativar Modo de Manutenção</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="action-button">Salvar Configurações</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYearFooterConfig"></span> Connect+.</p>
+        </div>
+    </footer>
+
+    <script src="../js/authManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('amadoAuthToken');
+            const userType = localStorage.getItem('amadoUserType');
+            const adminId = localStorage.getItem('amadoUserId');
+            const adminEmail = localStorage.getItem('amadoUserEmail');
+            const adminName = localStorage.getItem('amadoUserName');
+
+            if (!token || userType !== 'ADMIN') {
+                window.location.href = '/static/login/login.html';
+                return;
+            }
+
+            // Preencher o ano atual no footer
+            const currentYearSpan = document.getElementById('currentYearFooterConfig');
+            if (currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
+
+            // Preencher dados do admin no formulário
+            document.getElementById('admin-email').value = adminEmail || '';
+            document.getElementById('admin-name').value = adminName || '';
+
+            // Manipulador para o formulário de conta
+            document.getElementById('admin-account-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('admin-name').value.trim();
+                
+                if (!name) {
+                    alert('Por favor, preencha seu nome completo.');
+                    return;
+                }
+
+                // Aqui você faria uma chamada para a API para atualizar os dados
+                alert('Funcionalidade em desenvolvimento. Os dados seriam atualizados aqui.');
+                
+                // Atualizar o localStorage (temporário até implementar a API)
+                localStorage.setItem('amadoUserName', name);
+            });
+
+            // Manipulador para o formulário de senha
+            document.getElementById('admin-password-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const currentPassword = document.getElementById('current-password').value;
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    alert('Por favor, preencha todos os campos de senha.');
+                    return;
+                }
+
+                if (newPassword !== confirmPassword) {
+                    alert('A nova senha e a confirmação não coincidem.');
+                    return;
+                }
+
+                // Aqui você faria uma chamada para a API para alterar a senha
+                alert('Funcionalidade em desenvolvimento. A senha seria alterada aqui.');
+            });
+
+            // Manipulador para o formulário de configurações do sistema
+            document.getElementById('system-settings-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Aqui você faria uma chamada para a API para salvar as configurações
+                alert('Funcionalidade em desenvolvimento. As configurações seriam salvas aqui.');
+            });
+        });
+    </script>
+</body>
+</html>

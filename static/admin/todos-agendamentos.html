@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos Agendamentos - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/admin-panel-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1>Painel Administrador</h1></div>
+        <nav><ul><!-- Links --></ul></nav>
+        <!-- Menu Admin -->
+    </header>
+
+    <main class="admin-container">
+        <section class="manage-all-appointments">
+            <h2>Todos os Agendamentos</h2>
+            
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="ag-status-filter">Status Agendamento:</label>
+                    <select id="ag-status-filter">
+                        <option value="TODOS">Todos</option>
+                        <option value="SOLICITADO">Solicitado</option>
+                        <option value="CONFIRMADO">Confirmado</option>
+                        <option value="REALIZADO">Realizado</option>
+                        <option value="CANCELADO_CLIENTE">Cancelado (Cliente)</option>
+                        <option value="CANCELADO_ATENDENTE">Cancelado (Atendente)</option>
+                        <option value="NAO_COMPARECEU_CLIENTE">Não Compareceu (Cliente)</option>
+                        <option value="NAO_COMPARECEU_ATENDENTE">Não Compareceu (Atendente)</option>
+                    </select>
+                </div>
+                 <div class="filter-group">
+                    <label for="ag-area-filter">Área de Atuação:</label>
+                    <select id="ag-area-filter">
+                        <option value="TODOS">Todas</option>
+                        <option value="SAUDE">Saúde</option>
+                        <option value="JURIDICO">Jurídico</option>
+                        <option value="CARREIRA">Carreira</option>
+                        <option value="CONTABIL">Contábil</option>
+                        <option value="ASSISTENCIA_SOCIAL">Assistência Social</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="ag-date-filter">Data (YYYY-MM-DD):</label>
+                    <input type="date" id="ag-date-filter">
+                </div>
+                <div class="filter-group search-group">
+                    <label for="ag-search-input">Buscar (Cliente/Atendente):</label>
+                    <input type="text" id="ag-search-input" placeholder="Nome, Email...">
+                </div>
+                <button id="apply-ag-filters-button" class="update-button" style="align-self: flex-end;">Buscar Agendamentos</button>
+            </div>
+            
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID Ag.</th>
+                            <th>Cliente</th>
+                            <th>Atendente</th>
+                            <th>Data/Hora</th>
+                            <th>Duração</th>
+                            <th>Modalidade</th>
+                            <th>Área</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointments-list-tbody">
+                        <tr><td colspan="9" class="loading-message">Carregando agendamentos...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Detalhes/Ações no Agendamento -->
+    <div id="appointment-action-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="appointment-modal-close-button">&times;</span>
+            <h2 id="appointment-modal-title">Detalhes do Agendamento</h2>
+            <div id="appointment-details-modal-content" class="attendant-details">
+                <!-- Detalhes do agendamento -->
+            </div>
+            <div class="form-group" id="appointment-motivo-form-group" style="display: none;">
+                <label for="appointment-action-reason">Motivo (se aplicável):</label>
+                <textarea id="appointment-action-reason" rows="3"></textarea>
+            </div>
+            <div class="modal-buttons">
+                <button id="appointment-cancel-action-button" class="cancel-button action-button">Fechar</button>
+                <button id="appointment-confirm-action-button" class="confirm-button action-button" style="display: none;">Confirmar Ação</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/authManager.js"></script>
+    <script src="../js/todos-agendamentos-script.js"></script>
+</body>
+</html>

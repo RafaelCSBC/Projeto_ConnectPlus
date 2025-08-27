@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Clientes - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS Geral -->
+<link rel="stylesheet" href="../css/admin-panel-styles.css"> <!-- CSS do Painel Admin (Reutilizado) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1>Painel Administrador</h1></div>
+        <nav><ul><!-- Links pelo authManager.js --></ul></nav>
+        <!-- Menu do Admin pelo authManager.js -->
+    </header>
+
+    <main class="admin-container">
+        <section class="manage-clients">
+            <h2>Gerenciar Clientes</h2>
+            
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label for="client-status-filter">Status:</label>
+                    <select id="client-status-filter">
+                        <option value="TODOS">Todos</option>
+                        <option value="ATIVO">Ativo</option>
+                        <option value="BLOQUEADO">Bloqueado</option>
+                        <option value="INATIVO">Inativo</option>
+                    </select>
+                </div>
+                <div class="filter-group search-group">
+                    <label for="client-search-input">Buscar Clientes:</label>
+                    <input type="text" id="client-search-input" placeholder="Nome, Email, CPF...">
+                </div>
+                <button id="apply-client-filters-button" class="update-button" style="align-self: flex-end;">Buscar Clientes</button>
+            </div>
+            
+            <div class="table-container">
+                <table class="data-table"> <!-- Classe genérica .data-table -->
+                    <thead>
+                        <tr>
+                            <th>Nome Completo</th>
+                            <th>Email</th>
+                            <th>CPF</th>
+                            <th>Data Cadastro</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="clients-list-tbody">
+                        <tr><td colspan="6" class="loading-message">Carregando clientes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal para Ações no Cliente -->
+    <div id="client-action-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="client-modal-close-button">&times;</span>
+            <h2 id="client-modal-title">Ação no Cliente</h2>
+            <div id="client-details-modal-content" class="attendant-details"> <!-- Reutilizar estilo -->
+                <!-- Detalhes do cliente -->
+            </div>
+            <div class="form-group" id="client-motivo-form-group" style="display: none;">
+                <label for="client-action-reason">Motivo da Ação:</label>
+                <textarea id="client-action-reason" rows="3" placeholder="Descreva o motivo (obrigatório para bloqueio/desbloqueio)"></textarea>
+            </div>
+            <div class="modal-buttons">
+                <button id="client-cancel-action-button" class="cancel-button action-button">Fechar</button>
+                <button id="client-confirm-action-button" class="confirm-button action-button" style="display: none;">Confirmar Ação</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/authManager.js"></script>
+    <script src="../js/gerenciar-clientes-script.js"></script>
+</body>
+</html>
