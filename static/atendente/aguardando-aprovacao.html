@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"><title>Cadastro em Análise - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/atendente-styles.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header><div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Grupo <span class="highlight">AMADO</span></a></h1></div><nav><ul></ul></nav></header>
+    <main class="status-page-container">
+        <i class="fas fa-clock"></i>
+        <h2>Cadastro em Análise</h2>
+        <p>Obrigado por se cadastrar como atendente no Connect+! Seu perfil está atualmente em análise pela nossa equipe.</p>
+        <p>Você receberá uma notificação por email assim que seu cadastro for aprovado. Enquanto isso, você pode <a href="/static/atendente/perfil.html">visualizar ou completar seu perfil</a> (algumas edições podem estar limitadas) ou <a href="/static/contato/contato.html">entrar em contato</a> se tiver dúvidas.</p>
+        <a href="#" id="logoutButtonStatusPage" class="action-button" style="background-color:#6c757d;">Sair</a>
+    </main>
+    <footer><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Connect+.</p></div></footer>
+    <script src="../js/authManager.js"></script>
+    <script>
+        // Script simples para logout, pois o authManager pode já ter carregado e escondido o botão
+        document.getElementById('logoutButtonStatusPage').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('amadoAuthToken'); localStorage.removeItem('amadoUserType');
+            localStorage.removeItem('amadoUserId'); localStorage.removeItem('amadoUserName');
+            localStorage.removeItem('amadoUserEmail'); localStorage.removeItem('amadoUserStatus');
+            window.location.href = '/static/index.html';
+        });
+    </script>
+</body>
+</html>

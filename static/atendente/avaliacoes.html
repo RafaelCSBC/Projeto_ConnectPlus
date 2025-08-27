@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Avaliações - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/atendente-styles.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Grupo <span class="highlight">AMADO</span></a></h1></div>
+        <nav><ul></ul></nav>
+    </header>
+    <main class="atendente-panel-container">
+        <h2>Avaliações Recebidas</h2>
+        <div id="resumo-avaliacoes" style="margin-bottom: 20px; padding:15px; background-color:#f0f8ff; border-radius:5px;">
+            <p><strong>Média Geral:</strong> <span id="media-geral-display" class="rating-display"></span></p>
+            <p><strong>Total de Avaliações:</strong> <span id="total-avaliacoes-display"></span></p>
+        </div>
+        <div id="lista-avaliacoes-recebidas">
+            <p class="loading-message">Carregando avaliações...</p>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-bottom"><p>&copy; <span id="currentYearFooterAtAval"></span> Connect+.</p></div>
+    </footer>
+    <script src="../js/authManager.js"></script>
+    <script src="../js/avaliacoes-script.js"></script>
+</body>
+</html>

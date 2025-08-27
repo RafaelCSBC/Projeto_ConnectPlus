@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil Profissional - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/atendente-styles.css">
+<link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Connect+</a></h1></div>
+        <nav><ul></ul></nav>
+    </header>
+
+    <main class="atendente-panel-container">
+        <h2>Meu Perfil Profissional</h2>
+        <div id="atendente-perfil-messages" class="form-messages" style="display:none;"></div>
+
+        <form id="atendente-perfil-form" class="atendente-perfil-form perfil-form"> <!-- Reutilizando .perfil-form -->
+            <div class="panel-tabs">
+                 <a href="#pessoal" class="tab-link active" data-tab-target="#dados-pessoais-section">Dados Pessoais</a>
+                 <a href="#profissional" class="tab-link" data-tab-target="#dados-profissionais-section">Dados Profissionais</a>
+                 <a href="#senha" class="tab-link" data-tab-target="#alterar-senha-section">Alterar Senha</a>
+            </div>
+
+            <div id="dados-pessoais-section" class="tab-content active">
+                <h3>Dados Pessoais</h3>
+                <!-- Copiar campos de dados pessoais do perfil.html do cliente (nome, social, email, cpf, dataNasc, identidade, etc.) -->
+                <!-- Exemplo: -->
+                <div class="form-group">
+                    <label for="at-nome-completo">Nome Completo <span class="required-asterisk">*</span></label>
+                    <input type="text" id="at-nome-completo" name="nome_completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="at-nome-social">Nome Social</label>
+                    <input type="text" id="at-nome-social" name="nome_social">
+                </div>
+                <div class="form-group">
+                    <label for="at-email">Email (não pode ser alterado)</label>
+                    <input type="email" id="at-email" name="email" readonly>
+                </div>
+                 <div class="form-group">
+                    <label for="at-telefone">Telefone Celular Principal<span class="required-asterisk">*</span></label>
+                    <input type="tel" id="at-telefone" name="telefone_numero" required>
+                </div>
+                <!-- Adicionar outros campos pessoais aqui -->
+            </div>
+
+            <div id="dados-profissionais-section" class="tab-content">
+                <h3>Dados Profissionais</h3>
+                 <div class="form-group">
+                    <label for="at-area-atuacao">Área de Atuação <span class="required-asterisk">*</span></label>
+                    <select id="at-area-atuacao" name="area_atuacao" required>
+                        <option value="SAUDE">Saúde</option> <option value="JURIDICO">Jurídico</option>
+                        <option value="CARREIRA">Carreira</option> <option value="CONTABIL">Contábil</option>
+                        <option value="ASSISTENCIA_SOCIAL">Assistência Social</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="at-qualificacao-descricao">Descrição da Qualificação <span class="required-asterisk">*</span></label>
+                    <textarea id="at-qualificacao-descricao" name="qualificacao_descricao" rows="5" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="at-especialidades">Especialidades (separadas por vírgula)</label>
+                    <input type="text" id="at-especialidades" name="especialidades">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="at-registro-profissional">Registro Profissional</label>
+                        <input type="text" id="at-registro-profissional" name="registro_profissional">
+                    </div>
+                    <div class="form-group">
+                        <label for="at-anos-experiencia">Anos de Experiência</label>
+                        <input type="number" id="at-anos-experiencia" name="anos_experiencia" min="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="at-curriculo-link">Link para Currículo Online</label>
+                    <input type="url" id="at-curriculo-link" name="curriculo_link">
+                </div>
+                <div class="form-group">
+                    <label>Modalidades de Atendimento:</label>
+                    <div>
+                        <input type="checkbox" id="at-aceita-online" name="aceita_atendimento_online" value="true">
+                        <label for="at-aceita-online" class="checkbox-label"> Aceito Atendimento Online</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="at-aceita-presencial" name="aceita_atendimento_presencial" value="true">
+                        <label for="at-aceita-presencial" class="checkbox-label"> Aceito Atendimento Presencial</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="at-duracao-padrao">Duração Padrão do Atendimento (minutos) <span class="required-asterisk">*</span></label>
+                    <input type="number" id="at-duracao-padrao" name="duracao_padrao_atendimento_min" min="15" required>
+                </div>
+                <!-- Adicionar campo para endereço de atendimento presencial se `aceita_atendimento_presencial` for true -->
+            </div>
+            
+            <div id="alterar-senha-section" class="tab-content">
+                 <h3>Alterar Senha</h3>
+                <!-- Copiar formulário de alterar senha do perfil.html do cliente -->
+                 <div class="form-group">
+                    <label for="at-senha-atual">Senha Atual <span class="required-asterisk">*</span></label>
+                    <input type="password" id="at-senha-atual" name="senha_atual" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="at-nova-senha">Nova Senha <span class="required-asterisk">*</span></label>
+                        <input type="password" id="at-nova-senha" name="nova_senha" required minlength="8">
+                    </div>
+                    <div class="form-group">
+                        <label for="at-confirmar-nova-senha">Confirmar Nova Senha <span class="required-asterisk">*</span></label>
+                        <input type="password" id="at-confirmar-nova-senha" name="confirmar_nova_senha" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button" id="salvar-atendente-perfil-button" style="margin-top:20px;">Salvar Alterações no Perfil</button>
+        </form>
+    </main>
+    <footer>
+        <div class="footer-bottom"><p>&copy; <span id="currentYearFooterAtPerfil"></span> Connect+.</p></div>
+    </footer>
+    <script src="../js/authManager.js"></script>
+    <script src="../js/atendente-perfil-script.js"></script>
+</body>
+</html>

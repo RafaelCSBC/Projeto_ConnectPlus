@@ -1,0 +1,74 @@
+<!-- static/cliente/notificacoes.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"><title>Notificações - Connect+</title>
+    <link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../cliente/cliente-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+</head>
+<body>
+    <header><div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Connect+</a></h1></div><nav><ul></ul></nav></header>
+    <main class="cliente-panel-container">
+        <h2>Minhas Notificações</h2>
+        <ul id="lista-notificacoes" class="lista-notificacoes" style="list-style:none; padding:0;">
+            <p class="loading-message">Carregando notificações...</p>
+        </ul>
+    </main>
+    <footer><div class="footer-bottom"><p>&copy; <span id="currentYearFooterNotif"></span> Connect+.</p></div></footer>
+    <script src="../js/authManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('amadoAuthToken');
+            const userId = localStorage.getItem('amadoUserId');
+            if (!token || !userId) { window.location.href = '/static/login/login.html'; return; }
+            
+            const currentYearSpan = document.getElementById('currentYearFooterNotif');
+            if(currentYearSpan) currentYearSpan.textContent = new Date().getFullYear();
+
+            const listaNotif = document.getElementById('lista-notificacoes');
+            fetch(`/api/usuarios/${userId}/notificacoes`, { headers: { 'Authorization': `Bearer ${token}` }})
+                .then(res => res.ok ? res.json() : Promise.reject(res))
+                .then(data => {
+                    listaNotif.innerHTML = '';
+                    if (data.notificacoes && data.notificacoes.length > 0) {
+                        data.notificacoes.forEach(n => {
+                            const li = document.createElement('li');
+                            li.className = 'agendamento-item' + (n.lida ? '' : ' nao-lida'); // Adicionar classe .nao-lida se precisar de destaque
+                            li.innerHTML = `
+                                <div style="width:100%;">
+                                    <h4 style="font-size:1.1em; margin-bottom:5px;">${n.titulo} ${!n.lida ? '<span style="color:red; font-size:0.8em;">(Nova)</span>':''}</h4>
+                                    <p style="font-size:0.95em; margin-bottom:5px;">${n.mensagem}</p>
+                                    <small style="color:#777;">${new Date(n.data_criacao).toLocaleString('pt-BR')}</small>
+                                    ${n.link_referencia ? `<br><a href="${n.link_referencia}" class="action-button" style="font-size:0.85em; padding: 5px 10px; margin-top:8px; display:inline-block;">Ver Detalhes</a>` : ''}
+                                </div>`;
+                            // TODO: Adicionar lógica para marcar como lida ao clicar, se necessário
+                            li.addEventListener('click', () => marcarComoLida(n.id_notificacao, li));
+                            listaNotif.appendChild(li);
+                        });
+                    } else {
+                        listaNotif.innerHTML = '<p class="no-items-message">Nenhuma notificação.</p>';
+                    }
+                })
+                .catch(() => listaNotif.innerHTML = '<p class="error-message">Erro ao carregar notificações.</p>');
+
+            async function marcarComoLida(notificacaoId, listItemElement) {
+                // Opcional: se você quiser que a notificação seja marcada como lida no backend ao clicar
+                // e o status (Nova) suma.
+                if (listItemElement.querySelector('span[style*="color:red"]')) { // Se tem o "(Nova)"
+                    try {
+                        await fetch(`/api/notificacoes/${notificacaoId}/marcar-lida`, {
+                            method: 'POST',
+                            headers: { 'Authorization': `Bearer ${token}` }
+                        });
+                        listItemElement.querySelector('span[style*="color:red"]').remove();
+                        listItemElement.classList.remove('nao-lida'); // Atualiza visualmente
+                    } catch (err) {
+                        console.warn("Nao foi possível marcar como lida", err);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

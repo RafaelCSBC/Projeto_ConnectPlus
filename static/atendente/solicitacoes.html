@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações de Agendamento - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/atendente-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Connect+</a></h1></div>
+        <nav><ul></ul></nav>
+    </header>
+
+    <main class="atendente-panel-container">
+        <h2>Solicitações de Agendamento Pendentes</h2>
+        <div id="lista-solicitacoes-container">
+            <p class="loading-message">Carregando solicitações...</p>
+        </div>
+    </main>
+
+    <!-- Modal para Confirmar Agendamento (Atendente) -->
+    <div id="confirmar-agendamento-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button" id="confirmar-modal-close">&times;</span>
+            <h3>Confirmar Agendamento</h3>
+            <p>Cliente: <strong id="confirmar-cliente-nome"></strong></p>
+            <p>Data/Hora: <strong id="confirmar-data-hora"></strong></p>
+            <div class="form-group">
+                <label for="link-atendimento-online">Link para Atendimento Online (se aplicável):</label>
+                <input type="url" id="link-atendimento-online" placeholder="https://meet.google.com/xyz-abcd-efg">
+            </div>
+            <div class="form-group">
+                <label for="observacoes-atendente-confirmar">Observações para o Cliente (opcional):</label>
+                <textarea id="observacoes-atendente-confirmar" rows="3"></textarea>
+            </div>
+            <button id="botao-final-confirmar" class="action-button confirmar-button">Confirmar Agendamento</button>
+        </div>
+    </div>
+
+    <!-- Modal para Recusar Agendamento (Atendente) -->
+    <div id="recusar-agendamento-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button" id="recusar-modal-close">&times;</span>
+            <h3>Recusar Agendamento</h3>
+            <p>Cliente: <strong id="recusar-cliente-nome"></strong></p>
+            <p>Data/Hora: <strong id="recusar-data-hora"></strong></p>
+            <div class="form-group">
+                <label for="motivo-recusa">Motivo da Recusa (será enviado ao cliente):</label>
+                <textarea id="motivo-recusa" rows="3" required placeholder="Ex: Indisponibilidade de horário, necessidade de mais informações..."></textarea>
+            </div>
+            <button id="botao-final-recusar" class="action-button recusar-button">Enviar Recusa</button>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-bottom"><p>&copy; <span id="currentYearFooterSolic"></span> Connect+.</p></div>
+    </footer>
+    <script src="../js/authManager.js"></script>
+    <script src="../js/solicitacoes-script.js"></script>
+</body>
+</html>

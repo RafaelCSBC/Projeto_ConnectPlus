@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"><title>Conta Bloqueada - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css"><link rel="stylesheet" href="../css/atendente-styles.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header><div class="logo"><h1><a href="/static/index.html" style="color: white; text-decoration: none;">Grupo <span class="highlight">AMADO</span></a></h1></div><nav><ul></ul></nav></header>
+    <main class="status-page-container">
+        <i class="fas fa-lock"></i>
+        <h2>Conta Bloqueada</h2>
+        <p>Sua conta de atendente foi temporariamente bloqueada. Isso pode ocorrer devido a uma revisão de cadastro ou violação dos termos de serviço.</p>
+        <p>Por favor, <a href="/static/contato/contato.html">entre em contato com o suporte</a> para mais informações sobre o status da sua conta e os próximos passos.</p>
+         <a href="#" id="logoutButtonStatusPageBlocked" class="action-button" style="background-color:#6c757d;">Sair</a>
+    </main>
+    <footer><div class="footer-bottom"><p>&copy; ${new Date().getFullYear()} Connect+.</p></div></footer>
+    <script src="../js/authManager.js"></script>
+     <script>
+        document.getElementById('logoutButtonStatusPageBlocked').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('amadoAuthToken'); localStorage.removeItem('amadoUserType');
+            localStorage.removeItem('amadoUserId'); localStorage.removeItem('amadoUserName');
+            localStorage.removeItem('amadoUserEmail'); localStorage.removeItem('amadoUserStatus');
+            window.location.href = '/static/index.html';
+        });
+    </script>
+</body>
+</html>
