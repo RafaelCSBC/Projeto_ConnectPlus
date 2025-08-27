@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css">
+<link rel="stylesheet" href="../css/planos-styles.css">
+<link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1><a href="/static/index.html" style="color: white; text-decoration: none;">Connect<span class="highlight">+</span></a></h1>
+        </div>
+        <nav>
+            <ul>
+                <!-- Links serão preenchidos pelo authManager.js -->
+            </ul>
+        </nav>
+        <!-- Botão de Login ou Menu do Usuário será inserido aqui pelo authManager.js -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="planos-container">
+        <h2>Nossos Planos</h2>
+        <p class="planos-intro">Escolha o plano que melhor se adapta às suas necessidades e comece a receber apoio de profissionais qualificados.</p>
+        
+        <div class="planos-grid">
+            <div class="plano-card">
+                <div class="plano-header">
+                    <h3>Plano Básico</h3>
+                    <div class="plano-preco">
+                        <span class="preco">Gratuito</span>
+                    </div>
+                </div>
+                <div class="plano-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acesso à plataforma</li>
+                        <li><i class="fas fa-check"></i> Busca de profissionais</li>
+                        <li><i class="fas fa-check"></i> 1 agendamento por mês</li>
+                        <li><i class="fas fa-times"></i> Atendimento prioritário</li>
+                        <li><i class="fas fa-times"></i> Recursos avançados</li>
+                    </ul>
+                </div>
+                <div class="plano-footer">
+                    <button class="plano-button">Começar Agora</button>
+                </div>
+            </div>
+
+            <div class="plano-card destaque">
+                <div class="plano-badge">Mais Popular</div>
+                <div class="plano-header">
+                    <h3>Plano Premium</h3>
+                    <div class="plano-preco">
+                        <span class="preco-moeda">R$</span>
+                        <span class="preco">29,90</span>
+                        <span class="preco-periodo">/mês</span>
+                    </div>
+                </div>
+                <div class="plano-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acesso à plataforma</li>
+                        <li><i class="fas fa-check"></i> Busca de profissionais</li>
+                        <li><i class="fas fa-check"></i> Agendamentos ilimitados</li>
+                        <li><i class="fas fa-check"></i> Atendimento prioritário</li>
+                        <li><i class="fas fa-check"></i> Recursos avançados</li>
+                    </ul>
+                </div>
+                <div class="plano-footer">
+                    <button class="plano-button">Assinar Agora</button>
+                </div>
+            </div>
+
+            <div class="plano-card">
+                <div class="plano-header">
+                    <h3>Plano Empresarial</h3>
+                    <div class="plano-preco">
+                        <span class="preco">Personalizado</span>
+                    </div>
+                </div>
+                <div class="plano-features">
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acesso para múltiplos usuários</li>
+                        <li><i class="fas fa-check"></i> Agendamentos ilimitados</li>
+                        <li><i class="fas fa-check"></i> Atendimento VIP</li>
+                        <li><i class="fas fa-check"></i> Relatórios personalizados</li>
+                        <li><i class="fas fa-check"></i> Suporte dedicado</li>
+                    </ul>
+                </div>
+                <div class="plano-footer">
+                    <button class="plano-button">Fale Conosco</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="planos-faq">
+            <h3>Perguntas Frequentes</h3>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Como funciona o período de teste?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Oferecemos 7 dias de teste gratuito para o Plano Premium. Você pode cancelar a qualquer momento durante este período sem ser cobrado.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Posso mudar de plano depois?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer momento. As mudanças entram em vigor no próximo ciclo de cobrança.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>Como funciona o plano empresarial?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>O plano empresarial é personalizado de acordo com as necessidades da sua organização. Entre em contato conosco para discutir opções e preços.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Connect<span class="highlight">+</span></h2>
+            </div>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="/static/index.html">Home</a></li>
+                    <li><a href="/static/quem-somos/quem-somos.html">Sobre Nós</a></li>
+                    <li><a href="/static/agendamento/agendamento.html">Encontrar Profissionais</a></li>
+                    <li><a href="/static/planos/planos.html">Planos</a></li>
+                    <li><a href="/static/contato/contato.html">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>Email: contato@connectplus.org</p>
+                <p>Telefone: (XX) XXXX-XXXX</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span> Connect+. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/authManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Atualizar o ano no footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Funcionalidade de FAQ
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
