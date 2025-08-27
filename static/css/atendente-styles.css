@@ -1,0 +1,268 @@
+/* static/atendente/atendente-styles.css */
+body {
+    background-color: #f8f9fa;
+}
+
+.atendente-panel-container {
+    max-width: 1100px; /* Um pouco maior para agendas/listas mais densas */
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+}
+
+.atendente-panel-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.atendente-panel-container h3 {
+    font-size: 1.4rem;
+    color: #007bff; /* Cor diferente para atendente, se desejar */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Abas de Navegação (reutilizável do cliente-styles.css ou definir aqui) */
+.panel-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.panel-tabs .tab-link {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+.panel-tabs .tab-link.active,
+.panel-tabs .tab-link:hover {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+
+/* Lista de Solicitações de Agendamento */
+.solicitacao-item, .agenda-evento-item { /* Reutiliza estilos do .agendamento-item do cliente */
+    background-color: #fdfdfd;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start; /* Para alinhar no topo se tiver alturas diferentes */
+}
+
+.solicitacao-info, .agenda-evento-info {
+    flex-basis: 65%; /* Mais espaço para info */
+}
+.solicitacao-info h4, .agenda-evento-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #333; /* Cor padrão para o título */
+}
+.solicitacao-info p, .agenda-evento-info p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.solicitacao-actions, .agenda-evento-actions {
+    flex-basis: 30%;
+    text-align: right;
+    display: flex;
+    flex-direction: column; /* Botões um abaixo do outro */
+    gap: 8px;
+}
+.solicitacao-actions .action-button,
+.agenda-evento-actions .action-button {
+    width: 100%; /* Botões ocupam toda a largura da coluna de ações */
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+.solicitacao-actions .confirmar-button { background-color: #28a745; }
+.solicitacao-actions .confirmar-button:hover { background-color: #218838; }
+.solicitacao-actions .recusar-button { background-color: #dc3545; }
+.solicitacao-actions .recusar-button:hover { background-color: #c82333; }
+
+/* Perfil do Atendente (reutiliza .perfil-form do cliente-styles.css) */
+.atendente-perfil-form .form-group { margin-bottom: 20px; }
+/* ... (copiar e adaptar estilos do .perfil-form do cliente se necessário) ... */
+
+
+/* FullCalendar (se for usar para a agenda) */
+#calendario-agenda {
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Estilos para página de "Aguardando Aprovação" e "Conta Bloqueada" */
+.status-page-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.status-page-container i.fas {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+.status-page-container .fa-clock { color: #ffc107; } /* Amarelo para pendente */
+.status-page-container .fa-lock { color: #dc3545; } /* Vermelho para bloqueado */
+.status-page-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.status-page-container a.action-button {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Avaliações Recebidas */
+.avaliacao-recebida-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+.avaliacao-recebida-item .rating-display {
+    color: #f8c01a; /* Amarelo para estrelas */
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+.avaliacao-recebida-item .comentario-texto {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 8px;
+}
+.avaliacao-recebida-item .avaliador-info {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.no-items-message { /* Já definido em cliente-styles, mas certifique-se que existe */
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-style: italic;
+}
+
+/* Estilos para os modais de confirmação e recusa */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #555;
+}
+
+.modal h3 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+}
+
+.form-group input[type="url"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.action-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    color: white;
+    margin-right: 10px;
+}
+
+.confirmar-button {
+    background-color: #28a745;
+}
+
+.confirmar-button:hover {
+    background-color: #218838;
+}
+
+.recusar-button {
+    background-color: #dc3545;
+}
+
+.recusar-button:hover {
+    background-color: #c82333;
+}
+
+.cancel-button {
+    background-color: #6c757d;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}

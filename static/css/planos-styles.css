@@ -1,0 +1,212 @@
+/* static/planos/planos-styles.css */
+.planos-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+.planos-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.planos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.plano-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.plano-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.plano-card.destaque {
+    border: 2px solid #1a73e8;
+    transform: scale(1.05);
+}
+
+.plano-card.destaque:hover {
+    transform: scale(1.05) translateY(-10px);
+}
+
+.plano-badge {
+    position: absolute;
+    top: 15px;
+    right: -30px;
+    background-color: #1a73e8;
+    color: white;
+    padding: 5px 30px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transform: rotate(45deg);
+}
+
+.plano-header {
+    padding: 25px 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+}
+
+.plano-header h3 {
+    margin: 0 0 15px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.plano-preco {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1a73e8;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.preco-moeda, .preco-periodo {
+    font-size: 1rem;
+    color: #666;
+}
+
+.plano-features {
+    padding: 25px;
+}
+
+.plano-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.plano-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.plano-features li:last-child {
+    border-bottom: none;
+}
+
+.plano-features i {
+    margin-right: 10px;
+    font-size: 1rem;
+}
+
+.plano-features i.fa-check {
+    color: #28a745;
+}
+
+.plano-features i.fa-times {
+    color: #dc3545;
+}
+
+.plano-footer {
+    padding: 20px;
+    text-align: center;
+}
+
+.plano-button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.plano-button:hover {
+    background-color: #1558b7;
+}
+
+/* FAQ Section */
+.planos-faq {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.planos-faq h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.faq-question {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.faq-question i {
+    transition: transform 0.3s;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 15px 20px;
+    max-height: 200px;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .plano-card {
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    .plano-card.destaque {
+        transform: none;
+    }
+    
+    .plano-card.destaque:hover {
+        transform: translateY(-10px);
+    }
+}

@@ -1,0 +1,370 @@
+/* Reset e estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #1a73e8;
+    color: white;
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.highlight {
+    color: #ffffff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Botão de Login */
+.login-button-container {
+    display: flex;
+    align-items: center;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    color: #333;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.login-button i {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.login-button:hover {
+    background-color: #f5f5f5;
+}
+
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding: 20px;
+}
+
+.login-box {
+    background-color: #e6f2ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+}
+
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+/* Login Tabs */
+.login-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #1a73e8;
+    color: white;
+}
+
+.tab-button:first-child {
+    border-radius: 4px 0 0 0;
+}
+
+.tab-button:last-child {
+    border-radius: 0 4px 0 0;
+}
+
+/* Login Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    border-color: #1a73e8;
+    outline: none;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.forgot-password a {
+    color: #333;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.forgot-password a:hover {
+    color: #1a73e8;
+}
+
+.login-submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.login-submit-button:hover {
+    background-color: #1558b7;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #333;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.register-link a:hover {
+    color: #1a73e8;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav ul li {
+        margin: 5px;
+    }
+    
+    .login-button-container {
+        margin-top: 15px;
+    }
+    
+    .login-box {
+        padding: 20px;
+    }
+}
+
+/* Recuperação de Senha */
+.recuperar-senha-box {
+    background-color: #e6f2ff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #ccc;
+}
+
+.recuperar-senha-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.recovery-step {
+    display: none;
+}
+
+.recovery-step.active {
+    display: block;
+}
+
+.recovery-step p {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.submit-button:hover {
+    background-color: #1558b7;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.submit-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.form-links {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.form-links a {
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.form-links a:hover {
+    color: #1558b7;
+    text-decoration: underline;
+}
+
+#reenviar-codigo {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: transparent;
+    border: 1px solid #1a73e8;
+    color: #1a73e8;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+#reenviar-codigo:hover {
+    background-color: #1a73e8;
+    color: white;
+    text-decoration: none;
+}
+
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -10px;
+    border: 2px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}

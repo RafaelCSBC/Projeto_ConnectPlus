@@ -1,0 +1,166 @@
+/* static/cliente/cliente-styles.css */
+body {
+    background-color: #f8f9fa;
+}
+
+/* Header já estilizado globalmente e por authManager.js */
+
+.cliente-panel-container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.07);
+}
+
+.cliente-panel-container h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.cliente-panel-container h3 {
+    font-size: 1.4rem;
+    color: #1a73e8;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Abas de Navegação (se usadas dentro do painel) */
+.panel-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+.panel-tabs .tab-link {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px; /* Para sobrepor a borda principal */
+    color: #555;
+    text-decoration: none;
+    font-weight: 500;
+}
+.panel-tabs .tab-link.active,
+.panel-tabs .tab-link:hover {
+    color: #1a73e8;
+    border-bottom-color: #1a73e8;
+}
+
+/* Estilos para listas de agendamentos */
+.lista-agendamentos {
+    list-style: none;
+    padding: 0;
+}
+.agendamento-item {
+    background-color: #fdfdfd;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.2s ease;
+}
+.agendamento-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.agendamento-info {
+    flex-basis: 70%;
+}
+.agendamento-info h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.15rem;
+    color: #1a73e8;
+}
+.agendamento-info p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: #555;
+}
+.agendamento-info p strong {
+    color: #333;
+}
+
+.agendamento-status {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-align: center;
+    min-width: 100px;
+}
+/* Cores de status baseadas nas classes do admin-panel.css, mas prefixadas */
+.agendamento-status.status-SOLICITADO { background-color: #fff3e0; color: orange; border: 1px solid orange; }
+.agendamento-status.status-CONFIRMADO { background-color: #e6ffe6; color: green; border: 1px solid green; }
+.agendamento-status.status-REALIZADO { background-color: #e0e0e0; color: #555; border: 1px solid #ccc; }
+.agendamento-status.status-CANCELADO_CLIENTE,
+.agendamento-status.status-CANCELADO_ATENDENTE { background-color: #ffe0e0; color: red; border: 1px solid red; }
+.agendamento-status.status-NAO_COMPARECEU_CLIENTE,
+.agendamento-status.status-NAO_COMPARECEU_ATENDENTE { background-color: #fff8e1; color: #ffc107; border: 1px solid #ffc107; }
+
+
+.agendamento-actions {
+    flex-basis: 25%;
+    text-align: right;
+}
+.agendamento-actions .action-button { /* Botões já estilizados globalmente ou em admin-panel.css */
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+.agendamento-actions .cancelar-button { background-color: #dc3545; }
+.agendamento-actions .cancelar-button:hover { background-color: #c82333; }
+.agendamento-actions .avaliar-button { background-color: #ffc107; color: #333; }
+.agendamento-actions .avaliar-button:hover { background-color: #e0a800; }
+
+
+/* Estilos para Formulário de Perfil */
+.perfil-form .form-group { margin-bottom: 20px; }
+.perfil-form label { font-weight: 500; display: block; margin-bottom: 6px; }
+.perfil-form input[type="text"],
+.perfil-form input[type="email"],
+.perfil-form input[type="tel"],
+.perfil-form input[type="date"],
+.perfil-form input[type="password"],
+.perfil-form select,
+.perfil-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+.perfil-form .form-row { display: flex; gap: 20px; }
+.perfil-form .form-row .form-group { flex: 1; }
+.perfil-form .submit-button { /* Já deve ter estilos de .action-button ou similar */
+    padding: 12px 25px;
+    font-size: 1rem;
+    background-color: #1a73e8;
+    color:white;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.no-items-message {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-style: italic;
+}
+
+/* Modal de Avaliação */
+#avaliacao-modal .modal-content { max-width: 500px; }
+#avaliacao-form .stars-input { display: flex; justify-content: center; margin-bottom: 15px; }
+#avaliacao-form .stars-input i { font-size: 2rem; color: #ccc; cursor: pointer; margin: 0 5px; }
+#avaliacao-form .stars-input i.selected,
+#avaliacao-form .stars-input i:hover,
+#avaliacao-form .stars-input i:hover ~ i { color: #f8c01a; } /* Estrela cheia e hover */
