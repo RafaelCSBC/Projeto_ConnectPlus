@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Atendimento - Connect+</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- CSS Geral -->
+    <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon">
+<link rel="stylesheet" href="../css/agendamento-styles.css"> <!-- CSS Específico -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link rel="shortcut icon" href="../logo_atendimento.png" type="image/x-icon"> -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1><a href="/static/index.html" style="color: white; text-decoration: none;">Connect <span class="highlight">+</span></a></h1>
+        </div>
+        <nav>
+            <ul>
+                <!-- Links preenchidos pelo authManager.js -->
+            </ul>
+        </nav>
+        <!-- Botão de Login ou Menu do Usuário inserido pelo authManager.js -->
+    </header>
+
+    <!-- Main Content -->
+    <main class="agendamento-container">
+        <h2>Encontre Atendentes e Agende</h2>
+        
+        <div class="filtros-busca-container">
+            <div class="filtro-grupo">
+                <label for="filtro-area">Área de Atuação:</label>
+                <select id="filtro-area">
+                    <option value="TODAS">Todas as Áreas</option>
+                    <option value="SAUDE">Saúde</option>
+                    <option value="JURIDICO">Jurídico</option>
+                    <option value="CARREIRA">Carreira</option>
+                    <option value="CONTABIL">Contábil</option>
+                    <option value="ASSISTENCIA_SOCIAL">Assistência Social</option>
+                </select>
+            </div>
+            <div class="filtro-grupo">
+                <label for="filtro-busca-nome">Buscar por nome:</label>
+                <input type="text" id="filtro-busca-nome" placeholder="Digite o nome do atendente...">
+            </div>
+            <div class="filtro-grupo">
+                <button id="botao-aplicar-filtros">Buscar Atendentes</button>
+            </div>
+        </div>
+
+        <div id="lista-atendentes-container">
+            <p class="loading-message">Carregando atendentes...</p>
+            <!-- Cards dos atendentes serão inseridos aqui -->
+        </div>
+        <div id="login-prompt-container" style="display:none;">
+             <p class="login-prompt">Você precisa estar logado para agendar. <a href="/static/login/login.html?redirect=/static/agendamento/agendamento.html">Faça login</a> ou <a href="/static/cadastro/cadastro.html">cadastre-se</a>.</p>
+        </div>
+    </main>
+
+    <!-- Modal para Agendamento (Seleção de Data e Hora) -->
+    <div id="agendamento-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="agendamento-modal-close">&times;</span>
+            <h2>Agendar com <span id="modal-atendente-nome"></span></h2>
+            
+            <div class="selected-professional-info-modal" id="selected-professional-info-modal">
+                <!-- Info do atendente selecionado -->
+            </div>
+
+            <h3>Qualificações e Especialidades</h3>
+            <p id="modal-atendente-qualificacao" style="font-size: 0.9rem; margin-bottom: 10px;"></p>
+            <p id="modal-atendente-especialidades" style="font-size: 0.9rem; margin-bottom: 20px;"></p>
+
+            <h3>Selecione Data e Hora</h3>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month-button"><i class="fas fa-chevron-left"></i></button>
+                    <h4 id="current-month-year-display">Mês Ano</h4>
+                    <button id="next-month-button"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                    <!-- Dias da semana labels -->
+                    <div class="calendar-day-label">Dom</div>
+                    <div class="calendar-day-label">Seg</div>
+                    <div class="calendar-day-label">Ter</div>
+                    <div class="calendar-day-label">Qua</div>
+                    <div class="calendar-day-label">Qui</div>
+                    <div class="calendar-day-label">Sex</div>
+                    <div class="calendar-day-label">Sáb</div>
+                    <!-- Células dos dias serão geradas aqui -->
+                </div>
+            </div>
+            
+            <div class="time-slots-container" id="time-slots-container">
+                <h3>Horários Disponíveis para <span id="selected-date-display">--/--/----</span>:</h3>
+                <div class="time-slots-grid" id="time-slots-grid">
+                    <p class="no-results-message">Selecione uma data para ver os horários.</p>
+                    <!-- Horários serão adicionados dinamicamente -->
+                </div>
+            </div>
+            
+            <div class="agendamento-form-group">
+                <label for="assunto-solicitacao">Assunto/Motivo do agendamento (opcional):</label>
+                <textarea id="assunto-solicitacao" rows="3" placeholder="Ex: Acompanhamento, Primeira consulta, Dúvida sobre X..."></textarea>
+            </div>
+
+            <button id="confirm-agendamento-button" disabled>Solicitar Agendamento</button>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação de Solicitação de Agendamento -->
+    <div id="confirmacao-solicitacao-modal" class="modal">
+        <div class="modal-content confirmation-content">
+            <span class="close-button" id="confirmacao-solicitacao-modal-close">&times;</span>
+            <div class="confirmation-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Solicitação de Agendamento Enviada!</h2>
+            <div class="confirmation-details" id="confirmacao-solicitacao-details">
+                <!-- Detalhes do agendamento -->
+            </div>
+            <button id="ver-meus-agendamentos-button" class="back-button">Ver Meus Agendamentos</button>
+        </div>
+    </div>
+
+    <!-- Modal para Perfil do Atendente -->
+    <div id="perfil-atendente-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="perfil-modal-close">&times;</span>
+            <h2>Perfil do Atendente</h2>
+            <div id="perfil-atendente-conteudo">
+                <!-- O conteúdo será preenchido dinamicamente pelo JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/authManager.js"></script>
+    <script src="../js/agendamento-script.js"></script>
+</body>
+</html>
